@@ -1,0 +1,20 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+
+	fmt.Println("hello go")
+
+	resp, err := http.Get("https://jsonplaceholder.typicode.com/posts/1")
+	if err != nil {
+		fmt.Println("error ", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	fmt.Println("HTTP response status: ", resp.Status)
+}
